@@ -152,10 +152,10 @@ pub async fn home_page(
         let rank_svg = ctx.rank_svg.read().await.to_owned();
         let uv = uv_read.get(k).unwrap_or(&0).to_owned();
         let rv = referrer_read.get(k).unwrap_or(&0).to_owned();
-        if uv > 0 || rv > 0 {
+        // if uv > 0 || rv > 0 {
             rank_vec.push((k.to_owned(), (rv + uv) / rank_svg));
             level.insert(k.to_owned(), ctx.get_tend_from_uv_and_rv(uv, rv).await);
-        }
+        // }
     }
 
     rank_vec.sort_by(|a, b| b.1.cmp(&a.1));
